@@ -1,18 +1,17 @@
 {
   "name": "qreatino-web",
   "version": "1.0.0",
+  "private": true,
   "description": "Qreatino Creative Studio Website - Full animated experience",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "dev": "node server.js"
   },
   "keywords": [
-    "replica",
-    "webflow",
+    "creative",
     "agency",
     "portfolio",
-    "animations"
+    "branding",
+    "qreatino"
   ],
   "author": "",
   "license": "ISC"
