@@ -4,6 +4,7 @@
   "private": true,
   "description": "Qreatino Creative Studio Website - Full animated experience",
   "scripts": {
+    "build": "echo 'Deploying static site...'",
     "dev": "node server.js"
   },
   "keywords": [
