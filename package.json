@@ -1,19 +1,33 @@
 {
-  "name": "qreatino-web",
-  "version": "1.0.0",
+  "name": "qreatino",
   "private": true,
-  "description": "Qreatino Creative Studio Website - Full animated experience",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Qreatino — Creative Design & Branding Studio (React Web Application)",
   "scripts": {
-    "build": "echo 'Deploying static site...'",
-    "dev": "node server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [
     "creative",
     "agency",
     "portfolio",
     "branding",
-    "qreatino"
+    "qreatino",
+    "react",
+    "vite"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "lucide-react": "^0.446.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.6"
+  }
 }
