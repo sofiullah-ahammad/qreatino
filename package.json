@@ -1,19 +1,10 @@
 {
   "name": "qreatino-web",
   "version": "1.0.0",
+  "private": true,
   "description": "Qreatino Creative Studio Website",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
-  },
-  "keywords": [
-    "creative",
-    "agency",
-    "portfolio",
-    "branding",
-    "qreatino"
-  ],
-  "author": "",
-  "license": "ISC"
+    "build": "echo 'Static build ready'",
+    "dev": "node local-server.js"
+  }
 }

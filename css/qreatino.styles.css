@@ -320,7 +320,7 @@ pre.w-code-block code > span {
   display: contents;
 }
 
-.w-webflow-badge, .w-webflow-badge > img {
+.w-qreatino-badge, .w-qreatino-badge > img {
   box-sizing: unset;
   width: unset;
   height: unset;
@@ -370,7 +370,7 @@ pre.w-code-block code > span {
   transition: unset;
 }
 
-.w-webflow-badge {
+.w-qreatino-badge {
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 0 0 1px #0000001a, 0 1px 3px #0000001a;
@@ -394,7 +394,7 @@ pre.w-code-block code > span {
   transform: none !important;
 }
 
-.w-webflow-badge > img {
+.w-qreatino-badge > img {
   position: unset;
   visibility: unset !important;
   opacity: 1 !important;
@@ -9728,7 +9728,7 @@ blockquote {
   }
 }
 
-.w-webflow-badge, .w-webflow-disabled-badge, [class*="webflow-badge"], [href*="webflow.com?utm_campaign=brandjs"] { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; width: 0 !important; height: 0 !important; max-width: 0 !important; max-height: 0 !important; position: absolute !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; }
+.w-qreatino-badge, .w-qreatino-disabled-badge, [class*="qreatino-badge"], [href*="qreatino.com"] { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; width: 0 !important; height: 0 !important; max-width: 0 !important; max-height: 0 !important; position: absolute !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; }
 
 
 /* Refined elegant smaller year tags */
