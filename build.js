@@ -24,7 +24,9 @@ const itemsToCopy = [
   'template-info',
   'css',
   'js',
-  'assets'
+  'assets',
+  'robots.txt',
+  'sitemap.xml'
 ];
 
 function copyRecursive(src, dest) {
