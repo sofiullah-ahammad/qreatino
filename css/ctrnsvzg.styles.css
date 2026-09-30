@@ -10130,13 +10130,207 @@ html:not(.w-mod-js) .bungee-marquee-block {
   color: #ffffff !important;
 }
 .right-nav-menu .nav-link-overflow:last-child .nav-link::after {
-  display: none !important;
+  display: none !imp/* Mobile hamburger */
+.menu-button,
+.w-nav-button {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
-/* Mobile hamburger */
-.menu-button {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border-radius: 10px !important;
+
+/* ==========================================================================
+   Animated SVG Menu Toggle (Hamburger to X)
+   ========================================================================== */
+.menu-button-wrap.menu-toggle-wrapper {
+  width: 28px !important;
+  height: 28px !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  position: relative !important;
 }
-.menu-line {
-  background-color: #111111 !important;
+
+.menu-toggle-svg {
+  width: 26px !important;
+  height: 26px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  overflow: visible !important;
+  transform-origin: 16px 16px !important;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease !important;
+}
+
+.menu-toggle-path-loop {
+  stroke-dasharray: 12 63 !important;
+  stroke-dashoffset: 0 !important;
+  transition: stroke-dasharray 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke-dashoffset 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.menu-toggle-path-mid {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Light / Scrolled / Default theme */
+.navbar:not([data-theme-top="dark"]) .menu-toggle-svg,
+.navbar.is-scrolled .menu-toggle-svg {
+  color: #111111 !important;
+}
+
+/* Dark top navbar */
+.navbar[data-theme-top="dark"]:not(.is-scrolled) .menu-toggle-svg {
+  color: #ffffff !important;
+}
+
+/* Open state: morphs to X and rotates -45deg */
+.menu-button.w--open .menu-toggle-svg,
+.menu-button.is-open .menu-toggle-svg {
+  transform: rotate(-45deg) !important;
+}
+
+.navbar:not([data-theme-top="dark"]) .menu-button.w--open .menu-toggle-svg,
+.navbar:not([data-theme-top="dark"]) .menu-button.is-open .menu-toggle-svg,
+.navbar.is-scrolled .menu-button.w--open .menu-toggle-svg,
+.navbar.is-scrolled .menu-button.is-open .menu-toggle-svg {
+  color: #111111 !important;
+}
+
+.navbar[data-theme-top="dark"]:not(.is-scrolled) .menu-button.w--open .menu-toggle-svg,
+.navbar[data-theme-top="dark"]:not(.is-scrolled) .menu-button.is-open .menu-toggle-svg {
+  color: #ffffff !important;
+}
+
+.menu-button.w--open .menu-toggle-path-loop,
+.menu-button.is-open .menu-toggle-path-loop {
+  stroke-dasharray: 20 300 !important;
+  stroke-dashoffset: -32.42px !important;
+}
+
+/* Mobile & Tablet responsive navbar */
+@media screen and (max-width: 991px) {
+  .navbar {
+    top: 0.65rem !important;
+  }
+  .navbar.is-scrolled {
+    top: 0.65rem !important;
+  }
+  .nav-content-wrapper {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    padding: 0.6rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease !important;
+  }
+  .navbar.is-scrolled .nav-content-wrapper {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+  }
+  .brand-name-text {
+    font-size: 1.25rem !important;
+  }
+  .navbar[data-theme-top="dark"]:not(.is-scrolled) .menu-button {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+  .navbar[data-theme-top="dark"]:not(.is-scrolled) .menu-line {
+    background-color: #ffffff !important;
+  }
+  .navbar.is-scrolled .menu-button,
+  .navbar:not([data-theme-top="dark"]) .menu-button {
+    background: rgba(0, 0, 0, 0.06) !important;
+  }
+  .navbar.is-scrolled .menu-line,
+  .navbar:not([data-theme-top="dark"]) .menu-line {
+    background-color: #111111 !important;
+  }
+  .nav-component-grid:has(.menu-button.w--open) .nav-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 4.6rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: calc(100% - 2rem) !important;
+    height: auto !important;
+    max-height: calc(100vh - 5.5rem) !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25) !important;
+    padding: 1.4rem 1.25rem 1.5rem !important;
+    overflow-y: auto !important;
+    z-index: 9999 !important;
+  }
+  .nav-component-grid:has(.menu-button.w--open) .nav-menu-content {
+    position: static !important;
+    padding-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .navbar-background-wrap {
+    display: none !important;
+  }
+  .left-nav-menu, .right-nav-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    width: 100% !important;
+  }
+  .nav-link {
+    transform: none !important;
+    padding: 0.55rem 0.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+  }
+  .nav-link-overflow {
+    overflow: visible !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .nav-link:hover {
+    background: rgba(121, 82, 235, 0.08) !important;
+  }
+  .nav-text {
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    color: #111111 !important;
+    text-align: center !important;
+  }
+  .nav-link.w--current .nav-text {
+    color: #7952eb !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #7952eb !important;
+  }
+  .right-nav-menu .nav-link-overflow:last-child .nav-link {
+    margin-top: 0.5rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0.8rem 1.25rem !important;
+    background-color: #0e121e !important;
+    border-radius: 12px !important;
+  }
+  .right-nav-menu .nav-link-overflow:last-child .nav-link .nav-text {
+    color: #ffffff !important;
+    border-bottom: none !important;
+  }
 }

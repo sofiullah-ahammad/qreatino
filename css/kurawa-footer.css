@@ -1,0 +1,453 @@
+/* ==========================================================================
+   Kurawa-inspired Premium Minimalist Footer for Qreatino
+   Clean off-white background, subtle hairline dividers, 
+   curated typography, social icons, newsletter card & giant watermark
+   ========================================================================== */
+
+.kurawa-footer {
+  background-color: #f1f1f1 !important;
+  color: #0a0a0a !important;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  width: 100% !important;
+  padding: 68px 24px 28px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-top: 1px solid #e3e3e3 !important;
+}
+
+.kurawa-footer * {
+  box-sizing: border-box;
+}
+
+.kurawa-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+  gap: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT COLUMN
+   -------------------------------------------------------------------------- */
+.kurawa-footer-left {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+}
+
+.kurawa-nav-row {
+  display: flex;
+  gap: 72px;
+  margin-bottom: 44px;
+}
+
+.kurawa-nav-col {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.kurawa-col-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8f8f8f;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px 0;
+  display: block;
+}
+
+.kurawa-link-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.kurawa-divider-line {
+  height: 1px;
+  width: 100%;
+  background-color: #d0d0d0;
+  border: none;
+  margin: 0;
+}
+
+.kurawa-link-item {
+  display: block;
+  padding: 9px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0a0a0a;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.kurawa-link-item:hover {
+  color: #de362a;
+  transform: translateX(4px);
+}
+
+/* Contact Block */
+.kurawa-contact-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+.kurawa-email-heading {
+  margin: 10px 0 4px;
+}
+
+.kurawa-big-email {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.15;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.kurawa-big-email:hover {
+  color: #de362a;
+  transform: translateX(3px);
+}
+
+.kurawa-phone-item {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #5e5e5e;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 22px;
+  transition: color 0.2s ease;
+}
+
+.kurawa-phone-item:hover {
+  color: #0a0a0a;
+}
+
+/* Social Buttons */
+.kurawa-social-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kurawa-social-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+
+.kurawa-social-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.kurawa-social-btn:hover {
+  background-color: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.kurawa-social-btn:hover svg {
+  transform: scale(1.08);
+}
+
+/* Copyright Bar */
+.kurawa-copyright-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #8f8f8f;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.kurawa-copyright-sep {
+  color: #8f8f8f;
+}
+
+.kurawa-madeby-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kurawa-author-link {
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.kurawa-author-link:hover {
+  color: #de362a;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN
+   -------------------------------------------------------------------------- */
+.kurawa-footer-right {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-height: 500px;
+  position: relative;
+}
+
+/* Newsletter Card */
+.kurawa-newsletter-card {
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  padding: 26px 22px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.kurawa-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+  margin: 0 0 8px 0;
+  color: #0a0a0a;
+}
+
+.kurawa-card-highlight {
+  color: #de362a;
+}
+
+.kurawa-card-desc {
+  font-size: 13px;
+  color: #5e5e5e;
+  line-height: 1.48;
+  margin: 0 0 18px 0;
+}
+
+.kurawa-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.kurawa-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.kurawa-input-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0a0a0a;
+}
+
+.kurawa-email-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0a0a0a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kurawa-email-input:focus {
+  border-color: #0a0a0a;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.06);
+}
+
+.kurawa-email-input::placeholder {
+  color: #8f8f8f;
+}
+
+.kurawa-submit-btn {
+  width: 100%;
+  height: 46px;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.22s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kurawa-submit-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.kurawa-submit-btn:hover {
+  background-color: #de362a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(222, 54, 42, 0.22);
+}
+
+.kurawa-submit-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.kurawa-form-success {
+  display: none;
+  font-size: 13px;
+  color: #107c41;
+  font-weight: 600;
+  padding: 8px 0;
+  text-align: center;
+}
+
+/* Giant Signature Logo / Watermark */
+.kurawa-watermark-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.kurawa-watermark-link {
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.kurawa-watermark-link:hover {
+  opacity: 0.82;
+  transform: scale(0.99);
+}
+
+.kurawa-watermark-text {
+  font-size: clamp(52px, 6.2vw, 84px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #0a0a0a;
+  line-height: 0.95;
+  display: block;
+  user-select: none;
+}
+
+/* Subtle architectural watermark background stamp */
+.kurawa-ambient-bg {
+  position: absolute;
+  bottom: -20px;
+  right: -30px;
+  font-size: clamp(140px, 18vw, 220px);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: #0a0a0a;
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADAPTATIONS
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  .kurawa-footer-inner {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .kurawa-footer-left {
+    min-height: auto;
+    gap: 36px;
+  }
+
+  .kurawa-footer-right {
+    flex: none;
+    width: 100%;
+    min-height: auto;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .kurawa-newsletter-card {
+    max-width: 100%;
+  }
+
+  .kurawa-watermark-wrap {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+
+  .kurawa-watermark-link {
+    text-align: left;
+  }
+
+  .kurawa-watermark-text {
+    font-size: clamp(48px, 11vw, 76px);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .kurawa-footer {
+    padding: 48px 16px 24px !important;
+  }
+
+  .kurawa-nav-row {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .kurawa-nav-col {
+    width: 100%;
+  }
+
+  .kurawa-big-email {
+    font-size: 26px;
+    word-break: break-all;
+  }
+
+  .kurawa-copyright-bar {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+}

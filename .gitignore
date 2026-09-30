@@ -4,3 +4,4 @@ node_modules/
 contacts.json
 local-server.js
 dist/
+.vscode/
