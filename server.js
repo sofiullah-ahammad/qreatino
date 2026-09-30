@@ -2,12 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
-// Prefer dist/ directory if built, otherwise serve from root directory
-const ROOT = fs.existsSync(path.join(__dirname, 'dist', 'index.html'))
-  ? path.join(__dirname, 'dist')
-  : __dirname;
-
 const MIME_TYPES = {
   '.html': 'text/html; charset=UTF-8',
   '.css': 'text/css; charset=UTF-8',
@@ -31,8 +25,16 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=UTF-8'
 };
 
-const server = http.createServer((req, res) => {
-  let reqPath = decodeURI(req.url.split('?')[0]);
+function getRoot() {
+  if (fs.existsSync(path.join(__dirname, 'dist', 'index.html'))) {
+    return path.join(__dirname, 'dist');
+  }
+  return __dirname;
+}
+
+function handleRequest(req, res) {
+  const ROOT = getRoot();
+  let reqPath = decodeURI((req.url || '/').split('?')[0]);
   if (reqPath.endsWith('/') && reqPath.length > 1) {
     reqPath = reqPath.slice(0, -1);
   }
@@ -64,84 +66,89 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 1. Direct file resolution in ROOT (dist or __dirname)
+  // Helper to serve a file
+  function serveFile(filePath) {
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('500 Internal Server Error');
+        return;
+      }
+      res.statusCode = 200;
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.end(data);
+    });
+  }
+
+  // 1. Direct file resolution in ROOT
   let filePath = path.join(ROOT, reqPath);
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-    return serveFile(filePath, res);
+    return serveFile(filePath);
   }
 
   // 2. Directory with index.html
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
     const indexPath = path.join(filePath, 'index.html');
     if (fs.existsSync(indexPath)) {
-      return serveFile(indexPath, res);
+      return serveFile(indexPath);
     }
   }
 
   // 3. reqPath + /index.html
   const dirIndexPath = path.join(ROOT, reqPath, 'index.html');
   if (fs.existsSync(dirIndexPath)) {
-    return serveFile(dirIndexPath, res);
+    return serveFile(dirIndexPath);
   }
 
   // 4. reqPath + .html
   const htmlPath = path.join(ROOT, reqPath + '.html');
   if (fs.existsSync(htmlPath)) {
-    return serveFile(htmlPath, res);
+    return serveFile(htmlPath);
   }
 
-  // 5. Check root directory fallback if ROOT was dist
+  // 5. Fallback to __dirname if ROOT was dist
   if (ROOT !== __dirname) {
     let rootFilePath = path.join(__dirname, reqPath);
     if (fs.existsSync(rootFilePath) && fs.statSync(rootFilePath).isFile()) {
-      return serveFile(rootFilePath, res);
+      return serveFile(rootFilePath);
     }
     const rootDirIndex = path.join(__dirname, reqPath, 'index.html');
     if (fs.existsSync(rootDirIndex)) {
-      return serveFile(rootDirIndex, res);
+      return serveFile(rootDirIndex);
     }
   }
 
-  // Fallback to 404.html
+  // 6. 404 Fallback
   const notFoundPath = path.join(ROOT, '404.html');
   if (fs.existsSync(notFoundPath)) {
     res.statusCode = 404;
-    return serveFile(notFoundPath, res);
+    return serveFile(notFoundPath);
   }
 
   res.statusCode = 404;
   res.setHeader('Content-Type', 'text/plain');
   res.end('404 Not Found');
-});
+}
 
-function serveFile(filePath, res) {
-  const ext = path.extname(filePath).toLowerCase();
-  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('500 Internal Server Error');
-      return;
+// Local server execution
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  const server = http.createServer(handleRequest);
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.log(`Port ${PORT} is already in use.`);
+    } else {
+      console.error('Server error:', err);
     }
-    res.setHeader('Content-Type', contentType);
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.end(data);
   });
-}
-
-server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.log(`Port ${PORT} is already in use.`);
-  } else {
-    console.error('Server error:', err);
-  }
-});
-
-if (require.main === module || process.env.VERCEL) {
   server.listen(PORT, () => {
-    console.log(`Qreatino Server running on port ${PORT}`);
+    console.log(`Qreatino Server running on http://localhost:${PORT}`);
   });
 }
 
-module.exports = server;
+// Export handler function for Vercel Serverless Function compatibility
+module.exports = handleRequest;

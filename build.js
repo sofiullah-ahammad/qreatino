@@ -26,7 +26,10 @@ const itemsToCopy = [
   'js',
   'assets',
   'robots.txt',
-  'sitemap.xml'
+  'sitemap.xml',
+  'api',
+  'server.js',
+  'index.js'
 ];
 
 function copyRecursive(src, dest) {

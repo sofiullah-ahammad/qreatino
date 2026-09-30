@@ -1,25 +1,18 @@
+// Vercel Serverless Function for Contact Form
 module.exports = (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   if (req.method === 'POST') {
     let body = req.body;
+    // In case body is a string
     if (typeof body === 'string') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {}
+      try { body = JSON.parse(body); } catch(e) {}
     }
-    console.log('[Contact API] Form Submission:', body);
-    return res.status(200).json({
-      success: true,
-      message: 'Message received successfully!'
-    });
+    console.log('[Contact Form] Received message:', body);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ success: true, message: 'Message received successfully!' }));
+  } else {
+    res.statusCode = 405;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ success: false, error: 'Method not allowed' }));
   }
-
-  return res.status(405).json({ error: 'Method not allowed' });
 };
