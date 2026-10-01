@@ -552,20 +552,30 @@
   margin-top: clamp(48px, 8vw, 96px);
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 5vw, 64px);
+  gap: clamp(48px, 6vw, 84px);
 }
 
 .qreatino-projects-section .row {
   --p: 0;
   display: flex;
   align-items: center;
-  margin-left: 0;
+  width: 100%;
   isolation: isolate;
   position: relative;
 }
 
+/* 1st project (and odd rows): Aligned to the left */
+.qreatino-projects-section .row:not(.alt) {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* 2nd project (and even rows): Aligned to the right */
 .qreatino-projects-section .row.alt {
-  margin-left: clamp(0px, 17vw, 220px);
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .qreatino-projects-section .row[hidden] {
@@ -578,6 +588,17 @@
   color: inherit;
   text-decoration: none;
   max-width: 100%;
+  position: relative;
+}
+
+/* 1st project: Image on left, Card on right */
+.qreatino-projects-section .row:not(.alt) a {
+  flex-direction: row;
+}
+
+/* 2nd project: Image on right, Card on left */
+.qreatino-projects-section .row.alt a {
+  flex-direction: row-reverse;
 }
 
 .qreatino-projects-section .row a:focus-visible {
@@ -595,7 +616,7 @@
   border-radius: 14px;
   background: var(--ph);
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.07);
 }
 
 .qreatino-projects-section .img img {
@@ -610,53 +631,171 @@
   transform: scale(1.035);
 }
 
+/* Project Card */
 .qreatino-projects-section .card {
   position: relative;
   z-index: 1;
   flex: none;
   width: min(470px, 39vw);
-  aspect-ratio: 470/300;
+  aspect-ratio: 470/315;
   container-type: inline-size;
   background: var(--card);
-  border-radius: 14px;
-  padding: 5cqw 4.5cqw 4.5cqw;
+  padding: 4.6cqw 4.5cqw 4.2cqw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transform: translateX(calc((1 - var(--p)) * -63%));
   will-change: transform;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-  transition: background-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 1st project: Card on right, slides out to the RIGHT from behind the image on the left.
+   The left side is tucked into the image -> keep left corners square (0 radius) and right corners rounded! */
+.qreatino-projects-section .row:not(.alt) .card {
+  border-radius: 0 14px 14px 0;
+  transform: translateX(calc((1 - var(--p)) * -63%));
+}
+
+/* 2nd project: Card on left, slides out to the LEFT from behind the image on the right.
+   The right side is tucked into the image -> keep right corners square (0 radius) and left corners rounded! */
+.qreatino-projects-section .row.alt .card {
+  border-radius: 14px 0 0 14px;
+  transform: translateX(calc((1 - var(--p)) * 63%));
 }
 
 .qreatino-projects-section .row a:hover .card {
   background: #ebebeb;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.qreatino-projects-section .card h2 {
+/* Card Header with Category & Dot Indicator */
+.qreatino-projects-section .card-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.qreatino-projects-section .card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: clamp(10px, 2.6cqw, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Elegant indicator dot that emerges with the card */
+.qreatino-projects-section .card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000000;
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2.5px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.qreatino-projects-section .row a:hover .card-dot {
+  background: #7952eb;
+  box-shadow: 0 0 0 4px rgba(121, 82, 235, 0.25);
+  transform: scale(1.25);
+}
+
+.qreatino-projects-section .card-number {
+  font-family: var(--mono);
+  font-size: clamp(10px, 2.6cqw, 12px);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.qreatino-projects-section .card-main {
+  margin: 1.2cqw 0 1.5cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8cqw;
+}
+
+.qreatino-projects-section .card h2,
+.qreatino-projects-section .card-title {
   margin: 0;
   font-weight: 800;
-  font-size: clamp(28px, 4.8vw, 68px);
-  font-size: 15.5cqw;
-  line-height: 1;
+  font-size: clamp(26px, 4.2vw, 58px);
+  font-size: 13.8cqw;
+  line-height: 1.02;
   letter-spacing: -.045em;
   white-space: nowrap;
   color: var(--fg);
 }
 
-.qreatino-projects-section .card hr {
+.qreatino-projects-section .card-desc {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(11.5px, 2.7cqw, 13.5px);
+  line-height: 1.45;
+  color: #6e6e6e;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qreatino-projects-section .card-bottom {
+  width: 100%;
+}
+
+.qreatino-projects-section .card hr,
+.qreatino-projects-section .card-divider {
   border: 0;
   border-top: 1px solid var(--line);
   margin: 0 0 3cqw;
 }
 
-.qreatino-projects-section .card time {
+.qreatino-projects-section .card-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.qreatino-projects-section .card time,
+.qreatino-projects-section .card-date {
   display: block;
-  text-align: right;
   color: var(--muted);
-  font-size: clamp(12px, 1.4vw, 18px);
-  font-size: 4.4cqw;
+  font-size: clamp(11px, 1.4vw, 17px);
+  font-size: 4.2cqw;
   letter-spacing: -.01em;
+}
+
+.qreatino-projects-section .card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: clamp(11px, 1.3vw, 15px);
+  font-size: 3.8cqw;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.qreatino-projects-section .row a:hover .card-cta {
+  color: #7952eb;
+}
+
+.qreatino-projects-section .card-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qreatino-projects-section .row a:hover .card-arrow {
+  transform: translate(2px, -2px);
 }
 
 .qreatino-projects-section .empty {
@@ -676,29 +815,45 @@
   .qreatino-projects-section .row,
   .qreatino-projects-section .row.alt {
     margin-left: 0;
+    margin-right: 0;
+    justify-content: stretch;
   }
-  .qreatino-projects-section .row a {
+  .qreatino-projects-section .row a,
+  .qreatino-projects-section .row.alt a {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
   }
   .qreatino-projects-section .img {
     width: 100%;
+    order: 1 !important;
   }
-  .qreatino-projects-section .card {
+  .qreatino-projects-section .card,
+  .qreatino-projects-section .row:not(.alt) .card,
+  .qreatino-projects-section .row.alt .card {
     width: 92%;
+    border-radius: 14px !important;
+    aspect-ratio: auto;
+    min-height: 250px;
+    order: 2 !important;
     align-self: flex-end;
     margin-top: -40px;
     padding-top: calc(40px + 4cqw);
-    transform: translateY(calc((1 - var(--p)) * -45%));
+    transform: translateY(calc((1 - var(--p)) * -45%)) !important;
   }
-  .qreatino-projects-section .card h2 {
+  .qreatino-projects-section .row.alt .card {
+    align-self: flex-start;
+    transform: translateY(calc((1 - var(--p)) * -45%)) !important;
+  }
+  .qreatino-projects-section .card h2,
+  .qreatino-projects-section .card-title {
     font-size: 14cqw;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .qreatino-projects-section .card {
+  .qreatino-projects-section .card,
+  .qreatino-projects-section .row.alt .card {
     transform: none !important;
   }
 }
@@ -1021,14 +1176,70 @@
 (function() {
   const CATS = ["All projects", "Art Direction", "Strategy", "Digital Design", "Brand Identity", "Web design"];
   const PROJECTS = [
-    {title: "LUNATIC", date: "Sep 10 26", cat: "Brand Identity", img: "/assets/qreatino_lune.jpg", url: "/project/horizon"},
-    {title: "HALCYON", date: "Aug 22 26", cat: "Web design", img: "/assets/qreatino_aren.jpg", url: "/project/beyond"},
-    {title: "KINETIC", date: "Jul 14 26", cat: "Art Direction", img: "/assets/qreatino_oura.jpg", url: "/project/elevate"},
-    {title: "ATLAS", date: "Jun 03 26", cat: "Digital Design", img: "/assets/qreatino_forma.jpg", url: "/project/origin"},
-    {title: "ZENITH", date: "May 19 26", cat: "Strategy", img: "/assets/qreatino_oko.jpg", url: "/project/horizon"},
-    {title: "PRISM", date: "Apr 08 26", cat: "Brand Identity", img: "/assets/qreatino_velin.jpg", url: "/project/beyond"},
-    {title: "ORBIT", date: "Mar 12 26", cat: "Web design", img: "/assets/69b1c837ec8660081ea3b9fc_project-img-01.jpg", url: "/project/elevate"},
-    {title: "NOVA", date: "Feb 01 26", cat: "Digital Design", img: "/assets/69b1c8414e2b6e0f0c18d5ee_project-img-02.jpg", url: "/project/origin"}
+    {
+      title: "LUNATIC",
+      date: "Sep 10 26",
+      cat: "Brand Identity",
+      desc: "Dynamic brand identity and visual systems crafted for modern athletic culture.",
+      img: "/assets/qreatino_lune.jpg",
+      url: "/project/horizon"
+    },
+    {
+      title: "HALCYON",
+      date: "Aug 22 26",
+      cat: "Web design",
+      desc: "Minimalist digital platform with bespoke editorial typography and fluid navigation.",
+      img: "/assets/qreatino_aren.jpg",
+      url: "/project/beyond"
+    },
+    {
+      title: "KINETIC",
+      date: "Jul 14 26",
+      cat: "Art Direction",
+      desc: "High-octane art direction and motion visual language for contemporary soundscapes.",
+      img: "/assets/qreatino_oura.jpg",
+      url: "/project/elevate"
+    },
+    {
+      title: "ATLAS",
+      date: "Jun 03 26",
+      cat: "Digital Design",
+      desc: "Architectural design system and scalable digital experiences for global innovators.",
+      img: "/assets/qreatino_forma.jpg",
+      url: "/project/origin"
+    },
+    {
+      title: "ZENITH",
+      date: "May 19 26",
+      cat: "Strategy",
+      desc: "Strategic repositioning, brand narrative, and corporate design language for venture scale.",
+      img: "/assets/qreatino_oko.jpg",
+      url: "/project/horizon"
+    },
+    {
+      title: "PRISM",
+      date: "Apr 08 26",
+      cat: "Brand Identity",
+      desc: "Sensory packaging and tactile visual identity exploring geometric simplicity.",
+      img: "/assets/qreatino_velin.jpg",
+      url: "/project/beyond"
+    },
+    {
+      title: "ORBIT",
+      date: "Mar 12 26",
+      cat: "Web design",
+      desc: "Spatial web experience showcasing avant-garde digital installations and curation.",
+      img: "/assets/69b1c837ec8660081ea3b9fc_project-img-01.jpg",
+      url: "/project/elevate"
+    },
+    {
+      title: "NOVA",
+      date: "Feb 01 26",
+      cat: "Digital Design",
+      desc: "Futuristic digital design system and immersive creative direction for modern brands.",
+      img: "/assets/69b1c8414e2b6e0f0c18d5ee_project-img-02.jpg",
+      url: "/project/origin"
+    }
   ];
 
   function initProjects() {
@@ -1062,13 +1273,13 @@
     });
 
     // Rows
-    const rows = PROJECTS.map(p => {
+    const rows = PROJECTS.map((p, idx) => {
       const el = document.createElement("article");
       el.className = "row";
       const alt = document.createElement("a");
       alt.href = p.url || "#";
       alt.setAttribute("aria-label", p.title + " — " + p.cat);
-      alt.innerHTML = `<div class="img">${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` : ""}</div><div class="card"><h2>${p.title}</h2><div><hr><time>${p.date}</time></div></div>`;
+      alt.innerHTML = `<div class="img">${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` : ""}</div><div class="card"><div class="card-meta-top"><div class="card-tag"><span class="card-dot" aria-hidden="true"></span><span class="card-category">${p.cat}</span></div><span class="card-number">(${String(idx + 1).padStart(2, '0')})</span></div><div class="card-main"><h2 class="card-title">${p.title}</h2><p class="card-desc">${p.desc}</p></div><div class="card-bottom"><hr class="card-divider"><div class="card-meta-row"><time class="card-date">${p.date}</time><span class="card-cta"><span>View</span><svg class="card-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></div>`;
       if (!p.url || p.url === "#") {
         alt.addEventListener("click", e => e.preventDefault());
       }
