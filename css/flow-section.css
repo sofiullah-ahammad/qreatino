@@ -129,18 +129,21 @@
   transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
-/* Staggered Top Paddings: Signature AGR Studio Architectural Layout */
+/* Staggered Top Paddings: Signature Architectural Layout for 5 Phases */
 .qreatino-flow-step.step-1 {
-  padding: 90px 24px 24px 24px;
+  padding: 60px 20px 24px 20px;
 }
 .qreatino-flow-step.step-2 {
-  padding: 45px 24px 24px 24px;
+  padding: 120px 20px 24px 20px;
 }
 .qreatino-flow-step.step-3 {
-  padding: 300px 24px 24px 24px;
+  padding: 40px 20px 24px 20px;
 }
 .qreatino-flow-step.step-4 {
-  padding: 390px 24px 24px 24px;
+  padding: 240px 20px 24px 20px;
+}
+.qreatino-flow-step.step-5 {
+  padding: 340px 20px 24px 20px;
 }
 
 /* Step Content */

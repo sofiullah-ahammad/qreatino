@@ -5171,6 +5171,14 @@ blockquote {
   background-image: url("/assets/699dc746210764b6fc133cfe_image-08.webp");
 }
 
+.service-image._05 {
+  background-image: url("/assets/699dc74665661b35d3e7ff5f_image-09.webp");
+}
+
+.service-image._06 {
+  background-image: url("/assets/699dc746e121761b4d4b3e1b_image-10.webp");
+}
+
 .servive-grid-item {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
