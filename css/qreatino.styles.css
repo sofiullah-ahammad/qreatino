@@ -10536,3 +10536,71 @@ html:not(.w-mod-js) .bungee-marquee-block {
     padding: 1.75rem 1.25rem !important;
   }
 }
+
+
+/* ========================================================
+   Brand Services — Single Line Title & Alignment
+   ======================================================== */
+.service-title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 0.85rem !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+.service-number {
+  flex-shrink: 0 !important;
+}
+
+.service-title-overflow {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  height: 1.22em !important;
+  font-size: clamp(1.85rem, 2.5vw, 3rem) !important;
+  line-height: 1.18 !important;
+  overflow: hidden !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  min-width: 0 !important;
+}
+
+.service-title {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  font-size: clamp(1.85rem, 2.5vw, 3rem) !important;
+  line-height: 1.18 !important;
+  margin: 0 !important;
+  color: var(--primary-color--dark) !important;
+}
+
+.service-description-wrap {
+  width: auto !important;
+  max-width: 26rem !important;
+}
+
+@media screen and (min-width: 992px) {
+  .servive-grid-item {
+    grid-template-columns: 1.4fr 1fr 0.95fr !important;
+    align-items: center !important;
+    grid-column-gap: 2.25rem !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .servive-grid-item {
+    grid-template-columns: 1fr !important;
+    grid-row-gap: 1.5rem !important;
+  }
+  .service-title-overflow,
+  .service-title {
+    font-size: clamp(1.6rem, 4vw, 2.35rem) !important;
+    height: 1.22em !important;
+  }
+  .service-description-wrap {
+    max-width: 100% !important;
+  }
+}
