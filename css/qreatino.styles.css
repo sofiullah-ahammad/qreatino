@@ -10402,3 +10402,137 @@ html:not(.w-mod-js) .bungee-marquee-block {
     border-bottom: none !important;
   }
 }
+
+
+/* ========================================================
+   Strategic Approach / Work Process Cards
+   ======================================================== */
+.process-component-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-column-gap: 1.25rem !important;
+  grid-row-gap: 1.5rem !important;
+  width: 100% !important;
+  align-items: stretch !important;
+  perspective: 1200px !important;
+}
+
+.process-content-wrap {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 2.25rem 1.4rem !important;
+  border-radius: var(--_sizes---border-radius--large) !important;
+  background-color: var(--primary-color--white) !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  transform-style: preserve-3d !important;
+  will-change: transform !important;
+  min-height: 380px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.process-content-wrap:hover {
+  border-color: rgba(121, 82, 235, 0.3) !important;
+  box-shadow: 0 12px 32px rgba(14, 18, 30, 0.08) !important;
+}
+
+.process-content-block {
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.process-top-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.process-top-wrap .subtitle {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #6b7280 !important;
+}
+
+.process-content-wrap .process-number {
+  font-size: clamp(1.6rem, 2vw, 2.25rem) !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: #0e121e !important;
+  margin: 0.35rem 0 0.25rem 0 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  width: 100% !important;
+}
+
+.process-content-wrap .dividing-line {
+  width: 100% !important;
+  height: 1px !important;
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  margin: 0.85rem 0 0.85rem 0 !important;
+}
+
+.process-content-wrap p,
+.process-content-wrap .text-size-regular {
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  color: #4b5563 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
+}
+
+.process-content-wrap .work-process-bg {
+  position: absolute !important;
+  inset: 0% !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .process-component-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .process-component-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-column-gap: 1rem !important;
+    grid-row-gap: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .process-component-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .process-content-wrap {
+    min-height: auto !important;
+    padding: 1.75rem 1.25rem !important;
+  }
+}
